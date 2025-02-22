@@ -1,0 +1,415 @@
+device=cuda:1
+seed=69875
+write to ../saveModel/CAPLA_20221031095250_69875
+max_seq_len=1000
+max_pkt_len=63
+max_smi_len=150
+model: 
+CAPLA(
+  (smi_embed): Embedding(64, 128)
+  (seq_embed): Linear(in_features=40, out_features=128, bias=True)
+  (conv_seq): Sequential(
+    (0): DilatedConvBlockA(
+      (c1): Conv1d(128, 6, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(6, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(6, 8, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (1): DilatedConvBlockA(
+      (c1): Conv1d(32, 12, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(12, 16, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (2): DilatedConvBlockA(
+      (c1): Conv1d(64, 12, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(12, 16, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (3): DilatedConvBlockA(
+      (c1): Conv1d(64, 25, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(25, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(25, 28, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(25, 25, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(25, 25, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(25, 25, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(25, 25, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (4): AdaptiveMaxPool1d(output_size=1)
+    (5): Squeeze()
+  )
+  (conv_pkt): Sequential(
+    (0): Conv1d(128, 32, kernel_size=(3,), stride=(1,))
+    (1): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): PReLU(num_parameters=1)
+    (3): Conv1d(32, 64, kernel_size=(3,), stride=(1,))
+    (4): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (5): PReLU(num_parameters=1)
+    (6): Conv1d(64, 64, kernel_size=(3,), stride=(1,))
+    (7): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (8): PReLU(num_parameters=1)
+    (9): AdaptiveMaxPool1d(output_size=1)
+    (10): Squeeze()
+  )
+  (td_conv): Sequential(
+    (0): DilatedConvBlockA(
+      (c1): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(3, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(3, 4, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (1): DilatedConvBlockA(
+      (c1): Conv1d(16, 6, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(6, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(6, 8, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (2): DilatedConvBlockA(
+      (c1): Conv1d(32, 12, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(12, 16, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(12, 12, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (3): AdaptiveMaxPool1d(output_size=1)
+    (4): Squeeze()
+  )
+  (td_onlyconv): Sequential(
+    (0): DilatedConvBlockA(
+      (c1): Conv1d(1, 3, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(3, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(3, 4, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(3, 3, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (1): DilatedConvBlockA(
+      (c1): Conv1d(16, 6, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(6, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(6, 8, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (2): DilatedConvBlockA(
+      (c1): Conv1d(32, 6, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(6, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(6, 8, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (d16): DilatedConv(
+        (conv): Conv1d(6, 6, kernel_size=(3,), stride=(1,), padding=(16,), dilation=(16,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+  )
+  (smi_attention_poc): EncoderLayer(
+    (self_attention_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (self_attention): MultiHeadAttention(
+      (linear_q): Linear(in_features=128, out_features=128, bias=True)
+      (linear_k): Linear(in_features=128, out_features=128, bias=True)
+      (linear_v): Linear(in_features=128, out_features=128, bias=True)
+      (att_dropout): Dropout(p=0.1, inplace=False)
+      (output_layer): Linear(in_features=128, out_features=128, bias=True)
+    )
+    (self_attention_dropout): Dropout(p=0.1, inplace=False)
+    (ffn_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (ffn): FeedForwardNetwork(
+      (layer1): Linear(in_features=128, out_features=128, bias=True)
+      (gelu): ReLU(inplace=True)
+      (layer2): Linear(in_features=128, out_features=128, bias=True)
+    )
+    (ffn_dropout): Dropout(p=0.1, inplace=False)
+  )
+  (tdpoc_attention_tdlig): EncoderLayer(
+    (self_attention_norm): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (self_attention): MultiHeadAttention(
+      (linear_q): Linear(in_features=32, out_features=32, bias=True)
+      (linear_k): Linear(in_features=32, out_features=32, bias=True)
+      (linear_v): Linear(in_features=32, out_features=32, bias=True)
+      (att_dropout): Dropout(p=0.1, inplace=False)
+      (output_layer): Linear(in_features=32, out_features=32, bias=True)
+    )
+    (self_attention_dropout): Dropout(p=0.1, inplace=False)
+    (ffn_norm): LayerNorm((32,), eps=1e-05, elementwise_affine=True)
+    (ffn): FeedForwardNetwork(
+      (layer1): Linear(in_features=32, out_features=64, bias=True)
+      (gelu): ReLU(inplace=True)
+      (layer2): Linear(in_features=64, out_features=32, bias=True)
+    )
+    (ffn_dropout): Dropout(p=0.1, inplace=False)
+  )
+  (adaptmaxpool): AdaptiveMaxPool1d(output_size=1)
+  (squeeze): Squeeze()
+  (conv_smi): Sequential(
+    (0): DilatedConvBlockB(
+      (c1): Conv1d(128, 8, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (1): DilatedConvBlockB(
+      (c1): Conv1d(32, 16, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(16, 16, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (2): DilatedConvBlockB(
+      (c1): Conv1d(64, 32, kernel_size=(1,), stride=(1,))
+      (br1): Sequential(
+        (0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+      (d1): DilatedConv(
+        (conv): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(1,), bias=False)
+      )
+      (d2): DilatedConv(
+        (conv): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,), bias=False)
+      )
+      (d4): DilatedConv(
+        (conv): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(4,), dilation=(4,), bias=False)
+      )
+      (d8): DilatedConv(
+        (conv): Conv1d(32, 32, kernel_size=(3,), stride=(1,), padding=(8,), dilation=(8,), bias=False)
+      )
+      (br2): Sequential(
+        (0): BatchNorm1d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (1): PReLU(num_parameters=1)
+      )
+    )
+    (3): AdaptiveMaxPool1d(output_size=1)
+    (4): Squeeze()
+  )
+  (cat_dropout): Dropout(p=0.2, inplace=False)
+  (classifier): Sequential(
+    (0): Linear(in_features=320, out_features=256, bias=True)
+    (1): Dropout(p=0.5, inplace=False)
+    (2): PReLU(num_parameters=1)
+    (3): Linear(in_features=256, out_features=128, bias=True)
+    (4): Dropout(p=0.5, inplace=False)
+    (5): PReLU(num_parameters=1)
+    (6): Linear(in_features=128, out_features=1, bias=True)
+  )
+)
